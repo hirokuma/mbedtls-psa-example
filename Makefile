@@ -4,6 +4,7 @@ TARGETDIR=.
 SRC=\
 	test1.c \
 	test2.c \
+	test3.c \
 	main.c
 DEPEND=.depend
 
@@ -19,7 +20,7 @@ ${TARGET}: ${DEPEND} ${SRC}
 	gcc -o ${TARGETDIR}/${TARGET} ${SRC} ${CFLAGS} ${LDFLAGS}
 
 leak:
-	valgrind --tool=memcheck --leak-check=full ${TARGETDIR}/${TARGET}
+	valgrind --tool=memcheck --leak-check=full -s ${TARGETDIR}/${TARGET}
 
 clean:
 	-rm -f ${TARGET} ${DEPEND}

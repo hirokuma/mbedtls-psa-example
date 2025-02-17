@@ -4,6 +4,7 @@
 
 void test1(void);
 void test2(void);
+void test3(void);
 
 static void print_version(void)
 {
@@ -23,6 +24,7 @@ int main(void)
     print_version();
     test1();
     test2();
+    test3();
 
     printf("done.\n");
 
