@@ -1,7 +1,9 @@
 
-TARGET=./tst
+TARGET=tst
+TARGETDIR=.
 SRC=\
 	test1.c \
+	test2.c \
 	main.c
 DEPEND=.depend
 
@@ -14,10 +16,10 @@ depend:
 	gcc ${SRC} ${CFLAGS} -MM > ${DEPEND}
 
 ${TARGET}: ${DEPEND} ${SRC}
-	gcc -o ${TARGET} ${SRC} ${CFLAGS} ${LDFLAGS}
+	gcc -o ${TARGETDIR}/${TARGET} ${SRC} ${CFLAGS} ${LDFLAGS}
 
 leak:
-	valgrind --tool=memcheck --leak-check=full ${TARGET}
+	valgrind --tool=memcheck --leak-check=full ${TARGETDIR}/${TARGET}
 
 clean:
 	-rm -f ${TARGET} ${DEPEND}
